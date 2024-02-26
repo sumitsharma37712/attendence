@@ -52,7 +52,7 @@ const AdminAuth = expressAsyncHandler (async (req, res) => {
   // const passver =await Admin.findOne({password})
   try {
     if (!emailver) {
-      res.json ('somthing went wrong email not found.');
+      res.status(404).send ({Status: false, error: 'somthing went wrong email not found.'});
     } else if (await bcryptjs.compare (await password, emailver.password)) {
       const tdata = {
         id: emailver._id,
@@ -66,16 +66,16 @@ const AdminAuth = expressAsyncHandler (async (req, res) => {
       // req.session.email = email;
 
       // Respond with user data and token
-      const data = res.status(200).json ({
+      const data = res.status (200).send ({Status:true},{
         id: emailver._id,
         email: emailver.email,
         token: token,
       });
     } else {
-      res.status(404).json ('user not register.');
+      res.status (404).send ({Status: false, error:'user not register.'});
     }
   } catch (err) {
-    res.status(404).send (err);
+    res.status (404).send (err);
   }
 });
 
