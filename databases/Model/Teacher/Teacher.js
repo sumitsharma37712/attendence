@@ -25,14 +25,10 @@ const TeacherSchema = mongoose.Schema (
       require: true,
       trim: true,
     },
-    isTeacher: {
-      type: Boolean,
-      default: false,
-    }
   },
   {timestamp: true}
 );
 
-const Teacher = mongoose.model('Teacher',TeacherSchema)
+const Teacher = mongoose.model('Admin',TeacherSchema)
 
 module.exports=Teacher
