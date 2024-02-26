@@ -47,7 +47,7 @@ const AdminCreate = expressAsyncHandler (async (req, res) => {
 
 const AdminAuth = expressAsyncHandler (async (req, res) => {
   const {email, password} = req.body;
-  const emailver = await Admin.findOne ({email:email});
+  const emailver = await Admin.findOne ({email});
   // console.log(emailver)
   // const passver =await Admin.findOne({password})
   try {
