@@ -3,7 +3,7 @@ const Employee = require ('../databases/Model/Employee/Emplog');
 const jwt = require ('jsonwebtoken');
 const salt = 10;
 const bcryptjs = require ('bcryptjs');
-require('dotenv').config()
+require ('dotenv').config ();
 // console.log(bcryptjs)
 const EmployeeReg = asyncHandler (async (req, res) => {
   const {
@@ -19,10 +19,10 @@ const EmployeeReg = asyncHandler (async (req, res) => {
     designation,
     description,
   } = req.body;
-  
-  const {image}=req.file.filename
+
+  const {image} = req.file.filename;
   // console.log(email)
-  password = await bcryptjs.hash(plainTextPassword, salt);
+  password = await bcryptjs.hash (plainTextPassword, salt);
   // console.log(password)
   try {
     const check = await Employee.findOne ({email: email});
@@ -45,7 +45,7 @@ const EmployeeReg = asyncHandler (async (req, res) => {
         gender,
         designation,
         description,
-        image
+        image,
       });
       res.send (response);
       console.log (`${email}, Registration Successfull`);
@@ -70,7 +70,7 @@ const EmployeeAuth = asyncHandler (async (req, res) => {
         email: emailver.email,
         type: 'employee',
       };
-      const token = jwt.sign (tdata, 'Thisithetokenfoemployeeregiration');
+      const token = jwt.sign (tdata, 'Thisithetokenfoadminregiration');
       res.cookie ('jwt', token);
 
       // Store email in session (if needed)
@@ -95,12 +95,11 @@ const AllEmployeeData = asyncHandler (async (req, res) => {
   res.json (user);
 });
 
-const EmployeeData=asyncHandler(async(req,res)=>{
-    const id=req.params._id
-    const emailvar= await Employee.findOne({id:id})
-    const result=emailvar;
-    res.json (result);
-}) 
+const EmployeeData = asyncHandler (async (req, res) => {
+  const id = req.params._id;
+  const emailvar = await Employee.findOne ({id: id});
+  const result = emailvar;
+  res.json (result);
+});
 
-
-module.exports = {EmployeeReg, EmployeeAuth, AllEmployeeData,EmployeeData};
+module.exports = {EmployeeReg, EmployeeAuth, AllEmployeeData, EmployeeData};
