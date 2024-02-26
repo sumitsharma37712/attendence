@@ -66,17 +66,17 @@ const AdminAuth = expressAsyncHandler (async (req, res) => {
       // req.session.email = email;
 
       // Respond with user data and token
-      const data = res.json ({
+      const data = res.status(200).json ({
         id: emailver._id,
         email: emailver.email,
         token: token,
       });
     } else {
-      res.json ('somthing went wrong user not found.');
+      res.json ('user not register.');
     }
   } catch (err) {
     res.send (err);
   }
 });
 
-module.exports={AdminCreate,AdminAuth}
+module.exports = {AdminCreate, AdminAuth};
