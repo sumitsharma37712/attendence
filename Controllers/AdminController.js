@@ -72,10 +72,10 @@ const AdminAuth = expressAsyncHandler (async (req, res) => {
         token: token,
       });
     } else {
-      res.json ('user not register.');
+      res.status(404).json ('user not register.');
     }
   } catch (err) {
-    res.send (err);
+    res.status(404).send (err);
   }
 });
 

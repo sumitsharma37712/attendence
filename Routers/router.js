@@ -53,7 +53,7 @@ router.route ('/api/teacher/auth').post (TeacherAuth);
 router.route ('/api/teacher').get (AllTeacherData);
 // Authentication admin
 router.route ('/api/admincreate').post (AdminCreate);
-router.route ('/api/adminauth').post (VerifyTokenAndAdmin,AdminAuth);
+router.route ('/api/adminauth').post (AdminAuth);
 // verify authentication
 
 
