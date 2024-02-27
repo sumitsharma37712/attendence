@@ -79,4 +79,9 @@ const AdminAuth = expressAsyncHandler (async (req, res) => {
   }
 });
 
-module.exports = {AdminCreate, AdminAuth};
+const adminall=expressAsyncHandler(async(req,res)=>{
+  const user = await Admin.find ();
+  res.json (user);
+})
+
+module.exports = {AdminCreate, AdminAuth,adminall};
