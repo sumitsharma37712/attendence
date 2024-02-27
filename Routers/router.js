@@ -20,8 +20,9 @@ const {
   TeacherReg,
   AllTeacherData,
 } = require ('../Controllers/TeacherController');
-const {AdminCreate, AdminAuth} = require ('../Controllers/AdminController');
-const { VerifyTokenAndAdmin } = require('../Middleware/Verify');
+const {AdminCreate, AdminAuth, adminall} = require ('../Controllers/AdminController');
+const { VerifyTokenAndAdmin, VerifyToken, VerifyTokenAndAuthorization } = require('../Middleware/Verify');
+const { authenticateToken } = require('../Middleware/authVerify');
 const salt = 10;
 JWT_SECRET = process.env.JWT;
 
@@ -55,6 +56,7 @@ router.route ('/api/teacher').get (AllTeacherData);
 router.route ('/api/admincreate').post (AdminCreate);
 router.route ('/api/adminauth').post (AdminAuth);
 // verify authentication
+// router.route('/api/verify').get (VerifyTokenAndAuthorization)
 
 
 // get for perticular person data
