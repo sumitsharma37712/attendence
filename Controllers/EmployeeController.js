@@ -20,7 +20,7 @@ const EmployeeReg = asyncHandler (async (req, res) => {
     description,
   } = req.body;
 
-  const {image} = req.file.filename;
+  // const {image} = req.file.filename;
   // console.log(email)
   password = await bcryptjs.hash (plainTextPassword, salt);
   // console.log(password)
@@ -45,7 +45,7 @@ const EmployeeReg = asyncHandler (async (req, res) => {
         gender,
         designation,
         description,
-        image,
+        // image,
       });
       res.send (response);
       console.log (`${email}, Registration Successfull`);
